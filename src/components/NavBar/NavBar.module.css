@@ -51,12 +51,23 @@
   padding: 10px 30px;
   background-color: #f8b8d6;
   border: none;
-  border-radius: 20%;
+  border-radius: 10px;
   cursor: pointer;
   margin-right: 55px;
   white-space: nowrap;
   font-size: 15px;
   font-weight: bold;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  transition: box-shadow 200ms ease-in-out, transform 200ms ease-in-out;
+}
+
+.login:hover {
+  transform: scale(1.05);
+}
+
+.login:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
 }
 
 .menuIcon {

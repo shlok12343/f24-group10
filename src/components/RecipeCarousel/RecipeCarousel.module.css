@@ -1,0 +1,40 @@
+.carouselContainer {
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+
+.recipeList {
+    overflow-y: auto; /* Allows vertical scrolling */
+    height: 600px; /* Set a fixed height for the scrolling area */
+    flex: 1;
+}
+
+.recipeItem {
+    padding: 10px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px 0; /* Space between items */
+}
+
+.recipeItem:hover {
+    background-color: #e0e0e0;
+}
+
+.recipeDetails {
+    background-color: #fff;
+    width: 250px; /* Fixed width for the detail panel */
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    transform: translateX(100%); /* Start offscreen */
+    transition: transform 0.3s ease-in-out;
+}
+
+.carouselContainer .recipeDetails {
+    transform: translateX(0); /* Slide in */
+}

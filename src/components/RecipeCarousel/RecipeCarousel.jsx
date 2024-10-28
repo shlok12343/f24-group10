@@ -13,6 +13,10 @@ export default function RecipeCarousel({ recipes }) {
         setCurrent(current === recipes.length - 1 ? 0 : current + 1);
     };
 
+    const formatIngredients = (ingredients) => {
+        return ingredients.join(', ');
+    };
+
     return (
         <div className="carousel-container overflow-hidden relative">
             <div
@@ -24,7 +28,14 @@ export default function RecipeCarousel({ recipes }) {
             >
                 {recipes.map((recipe, index) => (
                     <div key={index} className="slide w-full flex-shrink-0" style={{ width: `calc(100% / ${3})` }}>
-                        <img alt={recipe.name} src={recipe.image}  className="w-full h-full object-cover" />
+                        <div className="relative w-full h-full">
+                            <img src={recipe.image} alt={recipe.name} className="w-full h-full object-cover" />
+                            <div className="info-overlay absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-3">
+                                <h2 className="text-xl mb-1">{recipe.name}</h2>
+                                <p className="text-sm">Ingredients: {formatIngredients(recipe.ingredients)}</p>
+                                <p className="text-sm">Directions: {recipe.directions}</p>
+                            </div>
+                        </div>
                     </div>
                 ))}
             </div>

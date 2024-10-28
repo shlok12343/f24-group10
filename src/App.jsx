@@ -8,7 +8,7 @@ import Search from './components/Search/Search';
 const recipes = [
   {
       name: "Spaghetti Carbonara",
-      image: "https://media.istockphoto.com/id/1457433817/photo/group-of-healthy-food-for-flexitarian-diet.jpg?b=1&s=612x612&w=0&k=20&c=V8oaDpP3mx6rUpRfrt2L9mZCD0_ySlnI7cd4nkgGAb8=",
+      image: "https://www.marthastewart.com/thmb/S9xVtnWSHldvxPHKOxEq0bALG-k=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/MSL-338686-spaghetti-carbonara-hero-3x2-69999-560b45d1dd9f4741b717176eff024839.jpeg",
       ingredients: [
           "400g spaghetti",
           "100g pancetta",
@@ -21,7 +21,7 @@ const recipes = [
   },
   {
       name: "Chicken Curry",
-      image: "https://media.istockphoto.com/id/1457433817/photo/group-of-healthy-food-for-flexitarian-diet.jpg?b=1&s=612x612&w=0&k=20&c=V8oaDpP3mx6rUpRfrt2L9mZCD0_ySlnI7cd4nkgGAb8=",
+      image: "https://www.allrecipes.com/thmb/FL-xnyAllLyHcKdkjUZkotVlHR8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/46822-indian-chicken-curry-ii-DDMFS-4x3-39160aaa95674ee395b9d4609e3b0988.jpg",
       ingredients: [
           "1 lb chicken breast, cubed",
           "2 tbsp curry powder",
@@ -34,7 +34,7 @@ const recipes = [
   },
   {
       name: "Chocolate Chip Cookies",
-      image: "https://media.istockphoto.com/id/1457433817/photo/group-of-healthy-food-for-flexitarian-diet.jpg?b=1&s=612x612&w=0&k=20&c=V8oaDpP3mx6rUpRfrt2L9mZCD0_ySlnI7cd4nkgGAb8=",
+      image: "https://www.eatyourselfskinny.com/wp-content/uploads/2023/11/chocolate-chip-cookies-44-1200x1703.jpg",
       ingredients: [
           "2 1/4 cups all-purpose flour",
           "1/2 tsp baking soda",
@@ -51,7 +51,7 @@ const recipes = [
 
   {
     name: "Beef Stroganoff",
-    image: "https://media.istockphoto.com/id/1457433817/photo/group-of-healthy-food-for-flexitarian-diet.jpg?b=1&s=612x612&w=0&k=20&c=V8oaDpP3mx6rUpRfrt2L9mZCD0_ySlnI7cd4nkgGAb8=",
+    image: "https://www.allrecipes.com/thmb/mSWde3PHTu-fDkbvWBw0D1JlS8U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/25202beef-stroganoff-iii-ddmfs-3x4-233-0f26fa477e9c446b970a32502468efc6.jpg",
     ingredients: [
         "2 lbs beef sirloin, thinly sliced",
         "4 tbsp butter",
@@ -68,7 +68,7 @@ const recipes = [
 },
 {
     name: "Vegetable Stir Fry",
-    image: "https://media.istockphoto.com/id/1457433817/photo/group-of-healthy-food-for-flexitarian-diet.jpg?b=1&s=612x612&w=0&k=20&c=V8oaDpP3mx6rUpRfrt2L9mZCD0_ySlnI7cd4nkgGAb8=",
+    image: "https://natashaskitchen.com/wp-content/uploads/2020/08/Vegetable-Stir-Fry-2.jpg",
     ingredients: [
         "2 tbsp vegetable oil",
         "1 bell pepper, julienned",
@@ -86,7 +86,7 @@ const recipes = [
 },
 {
     name: "Classic Margherita Pizza",
-    image: "https://media.istockphoto.com/id/1457433817/photo/group-of-healthy-food-for-flexitarian-diet.jpg?b=1&s=612x612&w=0&k=20&c=V8oaDpP3mx6rUpRfrt2L9mZCD0_ySlnI7cd4nkgGAb8=",
+    image: "https://www.abeautifulplate.com/wp-content/uploads/2015/08/the-best-homemade-margherita-pizza-1-4.jpg",
     ingredients: [
         "Pizza dough (store-bought or homemade)",
         "1/2 cup tomato sauce",
@@ -100,7 +100,7 @@ const recipes = [
 },
 {
     name: "Lemon Garlic Shrimp Pasta",
-    image: "https://media.istockphoto.com/id/1457433817/photo/group-of-healthy-food-for-flexitarian-diet.jpg?b=1&s=612x612&w=0&k=20&c=V8oaDpP3mx6rUpRfrt2L9mZCD0_ySlnI7cd4nkgGAb8=",
+    image: "https://www.oliveandmango.com/images/uploads/2019_08_22_lemon_garlic_shrimp_pasta_2.jpg",
     ingredients: [
         "1 lb spaghetti",
         "2 tbsp olive oil",
@@ -116,7 +116,7 @@ const recipes = [
 
 {
 name: "Vegetable Stir Fry",
-image: "https://media.istockphoto.com/id/1457433817/photo/group-of-healthy-food-for-flexitarian-diet.jpg?b=1&s=612x612&w=0&k=20&c=V8oaDpP3mx6rUpRfrt2L9mZCD0_ySlnI7cd4nkgGAb8=",
+image: "https://www.lecremedelacrumb.com/wp-content/uploads/2022/01/vegetable-stir-fry-10sm-7.jpg",
 ingredients: [
     "2 tbsp vegetable oil",
     "1 bell pepper, julienned",
@@ -134,7 +134,7 @@ directions: "Heat oil in a large skillet, add garlic and ginger, sauté for 30 s
 },
 {
 name: "Classic Margherita Pizza",
-image: "https://media.istockphoto.com/id/1457433817/photo/group-of-healthy-food-for-flexitarian-diet.jpg?b=1&s=612x612&w=0&k=20&c=V8oaDpP3mx6rUpRfrt2L9mZCD0_ySlnI7cd4nkgGAb8=",
+image: "https://cdn.shopify.com/s/files/1/0274/9503/9079/files/20220211142754-margherita-9920_5a73220e-4a1a-4d33-b38f-26e98e3cd986.jpg?v=1723650067",
 ingredients: [
     "Pizza dough (store-bought or homemade)",
     "1/2 cup tomato sauce",
@@ -148,7 +148,7 @@ directions: "Preheat your oven to 475°F (245°C). Roll out pizza dough on a bak
 },
 {
 name: "Lemon Garlic Shrimp Pasta",
-image: "https://media.istockphoto.com/id/1457433817/photo/group-of-healthy-food-for-flexitarian-diet.jpg?b=1&s=612x612&w=0&k=20&c=V8oaDpP3mx6rUpRfrt2L9mZCD0_ySlnI7cd4nkgGAb8=",
+image: "https://hostthetoast.com/wp-content/uploads/2016/09/Creamy-Lemon-Butter-Shrimp-with-Caramelized-Garlic-20.jpg",
 ingredients: [
     "1 lb spaghetti",
     "2 tbsp olive oil",
@@ -161,7 +161,6 @@ ingredients: [
 ],
 directions: "Cook pasta according to package instructions. Meanwhile, heat olive oil in a pan, add garlic and red pepper flakes, sauté for a minute. Add shrimp and cook until pink. Stir in lemon juice and zest. Drain pasta and add to the shrimp mixture, toss to combine. Season with salt and pepper, garnish with parsley."
 }
-
 ];
 
 

@@ -1,40 +1,73 @@
-.carouselContainer {
-    display: flex;
-    width: 100%;
+.carousel-container {
     position: relative;
+    width: 100%;
+    height: 300px; /* Adjust based on your needs */
 }
 
-.recipeList {
-    overflow-y: auto; /* Allows vertical scrolling */
-    height: 600px; /* Set a fixed height for the scrolling area */
-    flex: 1;
+.slide {
+    position: relative;
+    overflow: hidden;
 }
 
-.recipeItem {
-    padding: 10px;
-    background-color: #f0f0f0;
-    cursor: pointer;
-    border-radius: 5px;
-    margin: 5px 0; /* Space between items */
+img {
+    width: 100%;
+    height: auto;
 }
 
-.recipeItem:hover {
-    background-color: #e0e0e0;
-}
-
-.recipeDetails {
-    background-color: #fff;
-    width: 250px; /* Fixed width for the detail panel */
+.absolute {
     position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    box-shadow: -2px 0 8px rgba(0,0,0,0.1);
-    padding: 20px;
-    transform: translateX(100%); /* Start offscreen */
-    transition: transform 0.3s ease-in-out;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    color: white;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
-.carouselContainer .recipeDetails {
-    transform: translateX(0); /* Slide in */
+.px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+}
+
+.flex {
+    display: flex;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.object-cover {
+    object-fit: cover;
+}
+
+.transition {
+    transition: all 0.3s ease-in-out;
+}
+
+.focus\:outline-none {
+    outline: none;
 }

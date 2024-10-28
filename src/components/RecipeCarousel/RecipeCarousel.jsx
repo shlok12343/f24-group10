@@ -1,37 +1,42 @@
-import React, { useState } from 'react';
-import styles from './RecipeCarousel.module.css'; // Assume you have styles defined
+import React, { useState } from "react";
+import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill } from "react-icons/bs";
 
-function RecipeCarousel({ recipes }) {
-    const [selectedRecipeIndex, setSelectedRecipeIndex] = useState(null);
+export default function RecipeCarousel({ recipes }) {
+    const [current, setCurrent] = useState(0);
+     // Number of images visible at one time
 
-    const selectRecipe = index => {
-        setSelectedRecipeIndex(index);
+    const previousSlide = () => {
+        setCurrent(current === 0 ? recipes.length - 1 : current - 1);
+    };
+
+    const nextSlide = () => {
+        setCurrent(current === recipes.length - 1 ? 0 : current + 1);
     };
 
     return (
-        <div className={styles.carouselContainer}>
-            <div className={styles.recipeList}>
+        <div className="carousel-container overflow-hidden relative">
+            <div
+                className="flex transition ease-out duration-300"
+                style={{
+                    transform: `translateX(-${current * (100 / 3)}%)`,
+                    width: `${100}%`
+                }}
+            >
                 {recipes.map((recipe, index) => (
-                    <div key={index} className={styles.recipeItem} onClick={() => selectRecipe(index)}>
-                        {recipe.name}
+                    <div key={index} className="slide w-full flex-shrink-0" style={{ width: `calc(100% / ${3})` }}>
+                        <img alt={recipe.name} src={recipe.image}  className="w-full h-full object-cover" />
                     </div>
                 ))}
             </div>
-            {selectedRecipeIndex !== null && (
-                <div className={styles.recipeDetails}>
-                    <h3>{recipes[selectedRecipeIndex].name}</h3>
-                    <h4>Ingredients:</h4>
-                    <ul>
-                        {recipes[selectedRecipeIndex].ingredients.map((ingredient, i) => (
-                            <li key={i}>{ingredient}</li>
-                        ))}
-                    </ul>
-                    <h4>Directions:</h4>
-                    <p>{recipes[selectedRecipeIndex].directions}</p>
-                </div>
-            )}
+
+            <div className="absolute top-0 h-full w-full flex justify-between items-center text-white px-4 text-3xl">
+                <button onClick={previousSlide} className="focus:outline-none">
+                    <BsFillArrowLeftCircleFill />
+                </button>
+                <button onClick={nextSlide} className="focus:outline-none">
+                    <BsFillArrowRightCircleFill />
+                </button>
+            </div>
         </div>
     );
 }
-
-export default RecipeCarousel;

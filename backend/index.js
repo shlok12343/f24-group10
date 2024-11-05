@@ -38,10 +38,7 @@ async function processIngredients() {
 //
 
 // Call the function to load and process the data
-processIngredients();
-
-
-
+// processIngredients();
 async function see_all_data() {
   await loadData();
 

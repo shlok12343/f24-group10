@@ -1,53 +1,56 @@
+
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import styles from './RecipeCarousel.module.css';
 import React, { useState } from "react";
-import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill } from "react-icons/bs";
 
-export default function RecipeCarousel({ recipes }) {
-    const [current, setCurrent] = useState(0);
-     // Number of images visible at one time
 
-    const previousSlide = () => {
-        setCurrent(current === 0 ? recipes.length - 1 : current - 1);
+
+
+function RecipeCarousel({ recipes }) {
+
+    const [visible, setVisible] = useState(Array(recipes.length).fill(false));  // Create an array to track visibility for each slide
+
+    const toggleOverlay = (index) => {
+        const newVisible = [...visible];  // Copy current visibility array
+        newVisible[index] = !newVisible[index];  // Toggle visibility for the clicked item
+        setVisible(newVisible);  // Update the state
     };
 
-    const nextSlide = () => {
-        setCurrent(current === recipes.length - 1 ? 0 : current + 1);
-    };
 
-    const formatIngredients = (ingredients) => {
-        return ingredients.join(', ');
-    };
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 900,
+        slidesToShow: 4,
+        slidesToScroll: 4
+      };
 
     return (
-        <div className="carousel-container overflow-hidden relative">
-            <div
-                className="flex transition ease-out duration-300"
-                style={{
-                    transform: `translateX(-${current * (100 / 3)}%)`,
-                    width: `${100}%`
-                }}
-            >
-                {recipes.map((recipe, index) => (
-                    <div key={index} className="slide w-full flex-shrink-0" style={{ width: `calc(100% / ${3})` }}>
-                        <div className="relative w-full h-full">
-                            <img src={recipe.image} alt={recipe.name} className="w-full h-full object-cover" />
-                            <div className="info-overlay absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-3">
-                                <h2 className="text-xl mb-1">{recipe.name}</h2>
-                                <p className="text-sm">Ingredients: {formatIngredients(recipe.ingredients)}</p>
-                                <p className="text-sm">Directions: {recipe.directions}</p>
-                            </div>
+     <div className="carousel-container">
+         <Slider {...settings}>
+         {recipes.map((recipe, index) => (
+                    <div key={index} className="border-black" onClick={() => toggleOverlay(index)}>
+                <div className="text-xl text-center text-white bg-black bg-opacity-60 p-3 w-full">{recipe.name}</div>
+                <div className="relative w-full h-full">
+                            <img src={recipe.image} alt={recipe.name} style={{ width: '100%', height: '300px', objectFit: 'cover' ,border: '2px solid black', borderRadius: '10px' }} />
+                            {visible[index] && (
+                            <div className="activate info-overlay absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-3">
+                                <p className="text-sm text-left mb-2"><span class="text-base">Ingredients:</span> {recipe.ingredients.join(', ')}</p>
+                                <p className="text-sm text-left"><span class="text-base">Directions:</span> {recipe.directions}</p>
+                            </div> 
+                            )}
                         </div>
                     </div>
                 ))}
-            </div>
-
-            <div className="absolute top-0 h-full w-full flex justify-between items-center text-white px-4 text-3xl">
-                <button onClick={previousSlide} className="focus:outline-none">
-                    <BsFillArrowLeftCircleFill />
-                </button>
-                <button onClick={nextSlide} className="focus:outline-none">
-                    <BsFillArrowRightCircleFill />
-                </button>
-            </div>
-        </div>
+        </Slider>
+      </div>
     );
 }
+
+export default RecipeCarousel;
+
+
+
+

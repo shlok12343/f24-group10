@@ -4,6 +4,7 @@ import RecipeCarousel from './components/RecipeCarousel/RecipeCarousel';
 import React from 'react';
 import NavBar from './components/NavBar/NavBar';
 import Search from './components/Search/Search';
+import Footer from './components/Footer/Footer';
 
 const recipes = [
   {
@@ -99,7 +100,7 @@ const recipes = [
     directions: "Preheat your oven to 475°F (245°C). Roll out pizza dough on a baking sheet. Spread tomato sauce, sprinkle mozzarella cheese, and arrange tomato slices. Drizzle with olive oil, season with salt and pepper. Bake for 12-15 minutes or until crust is golden and cheese is bubbly. Garnish with fresh basil before serving."
 },
 {
-    name: "Lemon Garlic Shrimp Pasta",
+    name: "Lemon Garlic Shrimp",
     image: "https://www.oliveandmango.com/images/uploads/2019_08_22_lemon_garlic_shrimp_pasta_2.jpg",
     ingredients: [
         "1 lb spaghetti",
@@ -171,6 +172,7 @@ function App() {
       <NavBar />
       <Search />
       <RecipeCarousel recipes={recipes} />
+      <Footer/>
     </>
   );
 }

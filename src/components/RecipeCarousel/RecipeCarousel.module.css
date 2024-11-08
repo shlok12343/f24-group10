@@ -2,13 +2,15 @@
 .carousel-container .slide {
     position: relative;
     overflow: hidden;
-    padding: 4px; /* Add padding if needed */
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .carousel-container img {
     width: 100%;
-    height: 300px; /* Fixed height or as needed */
+    height: 300px; /* Fixed height as needed */
     object-fit: cover; /* Cover the container without stretching the image */
+    border-radius: 10px; /* Ensuring consistency with padding */
 }
 
 .info-overlay {
@@ -16,19 +18,18 @@
     bottom: 0;
     left: 0;
     right: 0;
+    top: 0; /* Ensure it covers the entire image */
     background: rgba(0, 0, 0, 0); /* Start fully transparent */
     color: white;
-    padding: 10px;
-    transition: background-color 0.3s ease; /* Smooth transition for the background */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100%;
+    align-items: center;
     opacity: 0; /* Make it fully transparent initially */
+    transition: opacity 0.3s ease; /* Smooth transition for opacity */
 }
 
 .slide:hover .info-overlay {
     background: rgba(0, 0, 0, 0.6); /* Black background appears on hover */
     opacity: 1; /* Make it fully visible on hover */
-    padding: 10px;
 }

@@ -1,8 +1,16 @@
+
+
+
+
+
+
+
+
 .container {
-  display: flex;
-  flex-direction: column;
+display: flex;
+flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  min-height: 20vh;
   text-align: center;
   margin-top: 40px;
   gap: 15px;
@@ -131,4 +139,75 @@
   right: 0px;
   cursor: pointer;
   font-weight: bold;
+} 
+
+/* Responsive adjustments */
+/* Tablet view */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .container h1 {
+    font-size: 32px;
+  }
+
+  .addItems {
+    gap: 15px;
+  }
+
+  .ingredientItemsContainer {
+    width: 280px;
+  }
+}
+
+/* Mobile view */
+@media (max-width: 480px) {
+  .container {
+    padding: 5px;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .container h1 {
+    font-size: 28px;
+  }
+
+  .container p {
+    font-size: 16px;
+  }
+
+  .addItems {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .addItems input,
+  .addItems button {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .searchbtn {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .ingredientItemsContainer {
+    width: 100%;
+    gap: 5px;
+  }
+
+  .ingredientList h3 {
+    font-size: 20px;
+  }
+}
+
+/* Remove any extra space from the body and html */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }

@@ -176,6 +176,7 @@ async function get_all_recipes(ingredient_ids) {
     this_recipe.push(recipeName,image,no_duplicate_ingredient,instructions);
     all_recipes.push(this_recipe);
   })
+return all_recipes
   console.log(all_recipes[0])
 }
 

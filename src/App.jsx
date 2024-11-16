@@ -166,15 +166,17 @@ directions: "Cook pasta according to package instructions. Meanwhile, heat olive
 
 
 function App() {
-  const [count, setCount] = useState(0);
-  return (
-    <>
-      <NavBar />
-      <Search />
-      <RecipeCarousel recipes={recipes} />
-      <Footer/>
-    </>
-  );
-}
+    return (
+      <>
+        <NavBar />
+        <div className="main-content">
+          <Search />
+          <RecipeCarousel recipes={recipes} />
+        </div>
+        <Footer />
+      </>
+    );
+  }
 
 export default App;
+

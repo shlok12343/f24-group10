@@ -21,12 +21,12 @@ function RecipeCarousel({ recipes }) {
     const settings = {
         dots: true,
         infinite: true,
-        speed: 1000,
+        speed: 1200,
         slidesToShow: 4,
         slidesToScroll: 4,
         swipe: true,           // Enables swipe gestures
         touchMove: true,        // Allows touch movement
-        swipeToSlide: true,     // Enables direct slide swiping
+        swipeToSlide: false,     // Enables direct slide swiping
         responsive: [
             {
                 breakpoint: 1024,

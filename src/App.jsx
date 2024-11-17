@@ -5,8 +5,12 @@ import React from 'react';
 import NavBar from './components/NavBar/NavBar';
 import Search from './components/Search/Search';
 import Footer from './components/Footer/Footer';
+import { supabase, upload_ingredient,get_all_recipes,delete_ingredient,ingredients_to_IDs } from './superbase';
 
-const recipes = [
+
+
+
+let recipes = [
   {
       name: "Spaghetti Carbonara",
       image: "https://www.marthastewart.com/thmb/S9xVtnWSHldvxPHKOxEq0bALG-k=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/MSL-338686-spaghetti-carbonara-hero-3x2-69999-560b45d1dd9f4741b717176eff024839.jpeg",
@@ -163,6 +167,17 @@ ingredients: [
 directions: "Cook pasta according to package instructions. Meanwhile, heat olive oil in a pan, add garlic and red pepper flakes, sauté for a minute. Add shrimp and cook until pink. Stir in lemon juice and zest. Drain pasta and add to the shrimp mixture, toss to combine. Season with salt and pepper, garnish with parsley."
 }
 ];
+
+let originalRecipes = get_all_recipes(['']);
+print
+(originalRecipes)
+
+/*recipes = originalRecipes.map(recipe => ({
+    name: recipe.recipeName,
+    image: `"https://www.marthastewart.com/thmb/S9xVtnWSHldvxPHKOxEq0bALG-k=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/MSL-338686-spaghetti-carbonara-hero-3x2-69999-560b45d1dd9f4741b717176eff024839.jpeg"`, // Assuming a base path for images
+    ingredients: recipe.ingredients.ingredients,
+    directions: recipe.instructions.instructions.join(" ")
+  }));*/
 
 
 function App() {

@@ -57,6 +57,7 @@ function RecipeCarousel({ recipes }) {
 
     return (
      <div className="carousel-container">
+        <h1 class="text-xl">Explore Recipes</h1>
          <Slider {...settings}>
          {recipes.map((recipe, index) => (
                     <div key={index} className="border-black" onClick={() => toggleOverlay(index)}>

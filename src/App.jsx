@@ -4,6 +4,8 @@ import RecipeCarousel from './components/RecipeCarousel/RecipeCarousel';
 import React from 'react';
 import NavBar from './components/NavBar/NavBar';
 import Search from './components/Search/Search';
+import Contribute from './components/Contribute/Contribute';
+import Footer from './components/Footer/Footer';
 import Footer from './components/Footer/Footer';
 import { supabase, upload_ingredient,get_all_recipes,delete_ingredient,ingredients_to_IDs } from './superbase';
 
@@ -188,6 +190,7 @@ function App() {
           <Search />
           <RecipeCarousel recipes={recipes} />
         </div>
+        <Contribute />
         <Footer />
       </>
     );

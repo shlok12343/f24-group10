@@ -6,7 +6,6 @@ import NavBar from './components/NavBar/NavBar';
 import Search from './components/Search/Search';
 import Contribute from './components/Contribute/Contribute';
 import Footer from './components/Footer/Footer';
-import Footer from './components/Footer/Footer';
 import { supabase, upload_ingredient,get_all_recipes,delete_ingredient,ingredients_to_IDs } from './superbase';
 
 
@@ -170,9 +169,9 @@ directions: "Cook pasta according to package instructions. Meanwhile, heat olive
 }
 ];
 
-let originalRecipes = get_all_recipes(['']);
+/*let originalRecipes = get_all_recipes(['']);
 print
-(originalRecipes)
+(originalRecipes)/*
 
 /*recipes = originalRecipes.map(recipe => ({
     name: recipe.recipeName,
@@ -186,11 +185,12 @@ function App() {
     return (
       <>
         <NavBar />
-        <div className="main-content">
+       
           <Search />
           <RecipeCarousel recipes={recipes} />
-        </div>
-        <Contribute />
+          <Contribute/>
+      
+     
         <Footer />
       </>
     );

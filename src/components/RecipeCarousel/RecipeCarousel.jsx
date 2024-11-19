@@ -2,7 +2,7 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import styles from './RecipeCarousel.module.css';
+
 import React, { useState } from "react";
 
 
@@ -10,12 +10,12 @@ import React, { useState } from "react";
 
 function RecipeCarousel({ recipes }) {
 
-    const [visible, setVisible] = useState(Array(recipes.length).fill(false));  // Create an array to track visibility for each slide
+    const [visible, setVisible] = useState(Array(recipes.length).fill(false));  
 
     const toggleOverlay = (index) => {
-        const newVisible = [...visible];  // Copy current visibility array
-        newVisible[index] = !newVisible[index];  // Toggle visibility for the clicked item
-        setVisible(newVisible);  // Update the state
+        const newVisible = [...visible];  
+        newVisible[index] = !newVisible[index];  
+        setVisible(newVisible);  
     };
 
     const settings = {

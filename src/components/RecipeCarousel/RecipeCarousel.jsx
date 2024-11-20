@@ -57,15 +57,15 @@ function RecipeCarousel({ recipes }) {
 
     return (
      <div className="carousel-container">
-        <h1 class="text-xl">Explore Recipes</h1>
+        <h1 class="text-3xl bold text-center py-10">Explore Recipes</h1>
          <Slider {...settings}>
          {recipes.map((recipe, index) => (
                     <div key={index} className="border-black" onClick={() => toggleOverlay(index)}>
-                <div className="text- text-center text-white bg-black bg-opacity-60 p-3 w-full">{recipe.name}</div>
+                <div className="text-xl text-center text-white bg-black bg-opacity-60 p-3 w-full h-20">{recipe.name}</div>
                 <div className="relative w-full h-full">
                             <img src={recipe.image} alt={recipe.name} style={{ width: '100%', height: '300px', objectFit: 'cover' ,border: '2px solid black', borderRadius: '10px' }} />
                             {visible[index] && (
-                            <div className="activate info-overlay absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-3">
+                            <div className="activate info-overlay absolute top-0 bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-3 overflow-y-auto">
                                 <p className="text-sm text-left mb-2"><span class="text-base">Ingredients:</span> {recipe.ingredients.join(', ')}</p>
                                 <p className="text-sm text-left"><span class="text-base">Directions:</span> {recipe.directions}</p>
                             </div> 

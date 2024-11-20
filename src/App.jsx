@@ -185,10 +185,9 @@ print
   }));*/
     const promises = [];
   async function fetchRecipeDetails(recipe) {
-    // Simulate an API call to fetch details
     
     const ingredient = recipe.ingredients.ingredients
-    const instructions = recipe.instructions.instructions
+    const instructions = recipe.instructions.instructions.join(".\n")
     const recipeName = recipe.recipeName
     const image = recipe.Image_Name
     const this_recipe = []
@@ -207,7 +206,7 @@ async function processRecipes() {
     console.log(originalRecipes);
     const promises = originalRecipes.map(element => fetchRecipeDetails(element));
     const rec = await Promise.all(promises);
-    return rec;  // This will be an array of all the fetched recipes
+    return rec;
 }
 
 
@@ -216,26 +215,22 @@ function App() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const fetchedRecipes = await processRecipes();  // Assume processRecipes is imported
-                setRec(fetchedRecipes);  // Set the fetched recipes to the state variable `rec`
+                const fetchedRecipes = await processRecipes();
+                setRec(fetchedRecipes);
             } catch (error) {
                 console.error('Failed to fetch recipes:', error);
             }
         }
-
         fetchData();
     }, []);
     
     return (
       <>
-        <NavBar />
-       
-          <Search />
-          <RecipeCarousel recipes={rec} />
-          <Contribute/>
-      
-     
-        <Footer />
+        <NavBar/>
+        <Search/>
+        <RecipeCarousel recipes={rec}/>
+        <Contribute/>
+        <Footer/>
       </>
     );
   }

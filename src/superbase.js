@@ -1,12 +1,7 @@
-const { createClient } = require('@supabase/supabase-js');
-const { parse } = require('dotenv');
-// Load environment variables from .env file
-require('dotenv').config();
-
-const privateKey = process.env.VITE_SUPABSE_ANON_KEY;
+import { createClient } from "@supabase/supabase-js";
+const privateKey = import.meta.env.VITE_SUPABSE_ANON_KEY;
 const VITE_SUPABSE_URL = 'https://tutnizjkuflqechjvxoo.supabase.co'
-const supabase = createClient(VITE_SUPABSE_URL, privateKey);
-
+export const supabase = createClient(VITE_SUPABSE_URL, privateKey);
 
 
 let globaldata;
@@ -62,7 +57,7 @@ async function uploadData() {
 
 // Call the function to load and process the data
 
-async function delete_ingredient(ingredient) {
+export async function delete_ingredient(ingredient) {
   const { data, error } = await supabase
     .from('ingredient')
     .delete()
@@ -77,7 +72,7 @@ async function delete_ingredient(ingredient) {
 
 
 
-async function upload_ingredient(ingredient) {
+export async function upload_ingredient(ingredient) {
   const { data, count, error } = await supabase
   .from('ingredient')
   .select('*', { count: 'exact' });
@@ -105,7 +100,7 @@ async function upload_ingredient(ingredient) {
 
 
 
-async function see_all_data() {
+export async function see_all_data() {
   const { data, error } = await supabase
       .from('recipes')  // Replace with your table name
       .select('*') // Replace with specific columns if needed
@@ -135,7 +130,7 @@ async function see_all_data() {
 
 }
 
-async function ingredients_to_IDs(ingredients) {
+export async function ingredients_to_IDs(ingredients) {
   const Ids = []
   for (const ingredient of ingredients) {
     const { data, error } = await supabase
@@ -152,7 +147,7 @@ async function ingredients_to_IDs(ingredients) {
   return Ids
 }
 
-async function get_all_recipes(ingredient_ids) {
+export async function get_all_recipes(ingredient_ids) {
   const ids = await ingredients_to_IDs(ingredient_ids);
   const { data, error } = await supabase
       .from('recipes')  // Replace with your table name
@@ -162,23 +157,27 @@ async function get_all_recipes(ingredient_ids) {
   if (error) {
     console.log(error)
   } else {
-    console.log(data)
+    //console.log(data)
   }
+  console.log("data",data);
   const all_recipes = []
-  data.forEach(recipe =>  {
-    id = recipe.recipeId
+  console.log("all_recipes",all_recipes);
+  /*data.map(recipe =>  {
     ingredient = recipe.ingredients.ingredients
     instructions = recipe.instructions.instructions
-    Ids = recipe.ingredientsIds.ingredientIds
     recipeName = recipe.recipeName
     image = recipe.Image_Name
     const this_recipe = []
     const no_duplicate_ingredient = [...new Set(ingredient)];
+    console.log(this_recipe);
     this_recipe.push(recipeName,image,no_duplicate_ingredient,instructions);
+    console.log(this_recipe);
     all_recipes.push(this_recipe);
-  })
-return all_recipes
-  console.log(all_recipes[0])
+  });
+  console.log("all_recipes2",all_recipes);
+console.log(all_recipes);*/
+return data;
+  
 }
 
 

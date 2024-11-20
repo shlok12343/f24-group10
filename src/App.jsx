@@ -1,12 +1,17 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import './App.css';
 import RecipeCarousel from './components/RecipeCarousel/RecipeCarousel';
 import React from 'react';
 import NavBar from './components/NavBar/NavBar';
 import Search from './components/Search/Search';
+import Contribute from './components/Contribute/Contribute';
 import Footer from './components/Footer/Footer';
+import { supabase, upload_ingredient,get_all_recipes,delete_ingredient,ingredients_to_IDs } from './superbase';
 
-const recipes = [
+
+
+
+let recipes = [
   {
       name: "Spaghetti Carbonara",
       image: "https://www.marthastewart.com/thmb/S9xVtnWSHldvxPHKOxEq0bALG-k=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/MSL-338686-spaghetti-carbonara-hero-3x2-69999-560b45d1dd9f4741b717176eff024839.jpeg",
@@ -165,15 +170,67 @@ directions: "Cook pasta according to package instructions. Meanwhile, heat olive
 ];
 
 
+
+/*
+print
+(originalRecipes)/*
+
+
+
+/*recipes = originalRecipes.map(recipe => ({
+    name: recipe.recipeName,
+    image: `"https://www.marthastewart.com/thmb/S9xVtnWSHldvxPHKOxEq0bALG-k=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/MSL-338686-spaghetti-carbonara-hero-3x2-69999-560b45d1dd9f4741b717176eff024839.jpeg"`, // Assuming a base path for images
+    ingredients: recipe.ingredients.ingredients,
+    directions: recipe.instructions.instructions.join(" ")
+  }));*/
+    const promises = [];
+  async function fetchRecipeDetails(recipe) {
+    
+    const ingredient = recipe.ingredients.ingredients
+    const instructions = recipe.instructions.instructions.join(".\n")
+    const recipeName = recipe.recipeName
+    const image = recipe.Image_Name
+    const this_recipe = []
+    const no_duplicate_ingredient = [...new Set(ingredient)];
+
+    return {
+        name: recipeName,
+        image: "https://www.marthastewart.com/thmb/S9xVtnWSHldvxPHKOxEq0bALG-k=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/MSL-338686-spaghetti-carbonara-hero-3x2-69999-560b45d1dd9f4741b717176eff024839.jpeg",
+        ingredients: no_duplicate_ingredient,
+        directions: instructions
+    };
+}
+
+async function processRecipes() {
+    const originalRecipes = await get_all_recipes(['']);
+    console.log(originalRecipes);
+    const promises = originalRecipes.map(element => fetchRecipeDetails(element));
+    const rec = await Promise.all(promises);
+    return rec;
+}
+
+
 function App() {
+    const [rec, setRec] = useState([]);
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const fetchedRecipes = await processRecipes();
+                setRec(fetchedRecipes);
+            } catch (error) {
+                console.error('Failed to fetch recipes:', error);
+            }
+        }
+        fetchData();
+    }, []);
+    
     return (
       <>
-        <NavBar />
-        <div className="main-content">
-          <Search />
-          <RecipeCarousel recipes={recipes} />
-        </div>
-        <Footer />
+        <NavBar/>
+        <Search/>
+        <RecipeCarousel recipes={rec}/>
+        <Contribute/>
+        <Footer/>
       </>
     );
   }

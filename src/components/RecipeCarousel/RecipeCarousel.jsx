@@ -19,7 +19,7 @@ function RecipeCarousel({ recipes }) {
     };
 
     const settings = {
-        dots: true,
+
         infinite: true,
         speed: 1200,
         slidesToShow: 4,
@@ -61,7 +61,7 @@ function RecipeCarousel({ recipes }) {
          <Slider {...settings}>
          {recipes.map((recipe, index) => (
                     <div key={index} className="border-black" onClick={() => toggleOverlay(index)}>
-                <div className="text-xl text-center text-white bg-black bg-opacity-60 p-3 w-full">{recipe.name}</div>
+                <div className="text- text-center text-white bg-black bg-opacity-60 p-3 w-full">{recipe.name}</div>
                 <div className="relative w-full h-full">
                             <img src={recipe.image} alt={recipe.name} style={{ width: '100%', height: '300px', objectFit: 'cover' ,border: '2px solid black', borderRadius: '10px' }} />
                             {visible[index] && (

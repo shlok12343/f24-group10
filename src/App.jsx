@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import './App.css';
 import RecipeCarousel from './components/RecipeCarousel/RecipeCarousel';
 import React from 'react';
@@ -169,9 +169,13 @@ directions: "Cook pasta according to package instructions. Meanwhile, heat olive
 }
 ];
 
-/*let originalRecipes = get_all_recipes(['']);
+
+
+/*
 print
 (originalRecipes)/*
+
+
 
 /*recipes = originalRecipes.map(recipe => ({
     name: recipe.recipeName,
@@ -179,15 +183,55 @@ print
     ingredients: recipe.ingredients.ingredients,
     directions: recipe.instructions.instructions.join(" ")
   }));*/
+    const promises = [];
+  async function fetchRecipeDetails(recipe) {
+    // Simulate an API call to fetch details
+    
+    const ingredient = recipe.ingredients.ingredients
+    const instructions = recipe.instructions.instructions
+    const recipeName = recipe.recipeName
+    const image = recipe.Image_Name
+    const this_recipe = []
+    const no_duplicate_ingredient = [...new Set(ingredient)];
+
+    return {
+        name: recipeName,
+        image: "https://www.marthastewart.com/thmb/S9xVtnWSHldvxPHKOxEq0bALG-k=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/MSL-338686-spaghetti-carbonara-hero-3x2-69999-560b45d1dd9f4741b717176eff024839.jpeg",
+        ingredients: no_duplicate_ingredient,
+        directions: instructions
+    };
+}
+
+async function processRecipes() {
+    const originalRecipes = await get_all_recipes(['']);
+    console.log(originalRecipes);
+    const promises = originalRecipes.map(element => fetchRecipeDetails(element));
+    const rec = await Promise.all(promises);
+    return rec;  // This will be an array of all the fetched recipes
+}
 
 
 function App() {
+    const [rec, setRec] = useState([]);
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const fetchedRecipes = await processRecipes();  // Assume processRecipes is imported
+                setRec(fetchedRecipes);  // Set the fetched recipes to the state variable `rec`
+            } catch (error) {
+                console.error('Failed to fetch recipes:', error);
+            }
+        }
+
+        fetchData();
+    }, []);
+    
     return (
       <>
         <NavBar />
        
           <Search />
-          <RecipeCarousel recipes={recipes} />
+          <RecipeCarousel recipes={rec} />
           <Contribute/>
       
      

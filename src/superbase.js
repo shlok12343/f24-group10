@@ -157,23 +157,27 @@ export async function get_all_recipes(ingredient_ids) {
   if (error) {
     console.log(error)
   } else {
-    console.log(data)
+    //console.log(data)
   }
+  console.log("data",data);
   const all_recipes = []
-  data.forEach(recipe =>  {
-    id = recipe.recipeId
+  console.log("all_recipes",all_recipes);
+  /*data.map(recipe =>  {
     ingredient = recipe.ingredients.ingredients
     instructions = recipe.instructions.instructions
-    Ids = recipe.ingredientsIds.ingredientIds
     recipeName = recipe.recipeName
     image = recipe.Image_Name
     const this_recipe = []
     const no_duplicate_ingredient = [...new Set(ingredient)];
+    console.log(this_recipe);
     this_recipe.push(recipeName,image,no_duplicate_ingredient,instructions);
+    console.log(this_recipe);
     all_recipes.push(this_recipe);
-  })
-return all_recipes
-  console.log(all_recipes[0])
+  });
+  console.log("all_recipes2",all_recipes);
+console.log(all_recipes);*/
+return data;
+  
 }
 
 

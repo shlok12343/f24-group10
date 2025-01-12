@@ -16,16 +16,26 @@ function NavBar() {
             ☰
           </div>
           <div className={styles.websiteName}>
-            <a href="#">WebsiteName</a>
+            <a href="#">Recipe Warehouse</a>
           </div>
           <ul className={`${styles.links} ${isOpen ? styles.showMenu : ''}`}>
-            <li>About</li>
-            <li>Search</li>
-            <li>Explore</li>
-            <li>Contribute</li>
+            <li>
+              <a href="#search" onClick={() => setIsOpen(false)}>
+                Search
+              </a>
+            </li>
+            <li>
+              <a href="#explore" onClick={() => setIsOpen(false)}>
+                Explore
+              </a>
+            </li>
+            <li>
+              <a href="#contribute" onClick={() => setIsOpen(false)}>
+                Contribute
+              </a>
+            </li>
           </ul>
         </nav>
-        <button className={styles.login}>Log In</button>
       </div>
     </>
   );

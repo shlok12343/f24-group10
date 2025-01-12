@@ -4,10 +4,8 @@ const { parse } = require('dotenv');
 require('dotenv').config();
 
 const privateKey = process.env.VITE_SUPABSE_ANON_KEY;
-const VITE_SUPABSE_URL = 'https://tutnizjkuflqechjvxoo.supabase.co'
+const VITE_SUPABSE_URL = 'https://tutnizjkuflqechjvxoo.supabase.co';
 const supabase = createClient(VITE_SUPABSE_URL, privateKey);
-
-
 
 let globaldata;
 /*
@@ -55,8 +53,6 @@ async function uploadData() {
 }
 */
 
-
-
 // filter, upload, delete, update, add to frontend
 //
 
@@ -69,48 +65,41 @@ async function delete_ingredient(ingredient) {
     .eq('ingredientName', ingredient);
 
   if (error) {
-    throw new error
+    throw new error();
   } else {
-    return "Ingredient deleted successfully!"
+    return 'Ingredient deleted successfully!';
   }
 }
-
-
 
 async function upload_ingredient(ingredient) {
   const { data, count, error } = await supabase
-  .from('ingredient')
-  .select('*', { count: 'exact' });
-
-
-  const all_ingredients = []
-  data.forEach(i => {
-    all_ingredients.push(i.ingredientName)
-  })
-  if (all_ingredients.includes(ingredient)) {
-    throw new error 
-  } else {
-    const update_count = count + 1
-    const { error2 } = await supabase
     .from('ingredient')
-    .insert([{
-      ingredientId: update_count,
-      ingredientName: ingredient
-    }]);
-    return "Recipe has been uploaded!"
+    .select('*', { count: 'exact' });
+
+  const all_ingredients = [];
+  data.forEach((i) => {
+    all_ingredients.push(i.ingredientName);
+  });
+  if (all_ingredients.includes(ingredient)) {
+    throw new error();
+  } else {
+    const update_count = count + 1;
+    const { error2 } = await supabase.from('ingredient').insert([
+      {
+        ingredientId: update_count,
+        ingredientName: ingredient,
+      },
+    ]);
+    return 'Recipe has been uploaded!';
   }
-
 }
-
-
-
 
 async function see_all_data() {
   const { data, error } = await supabase
-      .from('recipes')  // Replace with your table name
-      .select('*') // Replace with specific columns if needed
-      .contains('ingredientsIds', { ingredientIds: [2] });
-      //await loadData();
+    .from('recipes') // Replace with your table name
+    .select('*') // Replace with specific columns if needed
+    .contains('ingredientsIds', { ingredientIds: [2] });
+  //await loadData();
   /*
   if (globaldata) {
     data = globaldata[0]
@@ -130,13 +119,12 @@ async function see_all_data() {
     console.log("No data")
   }
   */
-  console.log(data)
-  console.log(error)
-
+  console.log(data);
+  console.log(error);
 }
 
 async function ingredients_to_IDs(ingredients) {
-  const Ids = []
+  const Ids = [];
   for (const ingredient of ingredients) {
     const { data, error } = await supabase
       .from('ingredient')
@@ -149,36 +137,43 @@ async function ingredients_to_IDs(ingredients) {
       Ids.push(data[0].ingredientId); // Push only the ingredientId
     }
   }
-  return Ids
+  return Ids;
 }
 
 async function get_all_recipes(ingredient_ids) {
   const ids = await ingredients_to_IDs(ingredient_ids);
   const { data, error } = await supabase
-      .from('recipes')  // Replace with your table name
-      .select('*') // Replace with specific columns if needed
-      .contains('ingredientsIds', { ingredientIds: ids });
-  
+    .from('recipes') // Replace with your table name
+    .select('*') // Replace with specific columns if needed
+    .contains('ingredientsIds', { ingredientIds: ids });
+
   if (error) {
-    console.log(error)
+    console.log(error);
   } else {
-    console.log(data)
+    console.log(data);
   }
-  const all_recipes = []
-  data.forEach(recipe =>  {
-    id = recipe.recipeId
-    ingredient = recipe.ingredients.ingredients
-    instructions = recipe.instructions.instructions
-    Ids = recipe.ingredientsIds.ingredientIds
-    recipeName = recipe.recipeName
-    image = recipe.Image_Name
-    const this_recipe = []
+  const all_recipes = [];
+  data.forEach((recipe) => {
+    id = recipe.recipeId;
+    ingredient = recipe.ingredients.ingredients;
+    instructions = recipe.instructions.instructions;
+    Ids = recipe.ingredientsIds.ingredientIds;
+    recipeName = recipe.recipeName;
+    image = recipe.Image_Name;
+    const this_recipe = [];
     const no_duplicate_ingredient = [...new Set(ingredient)];
-    this_recipe.push(recipeName,image,no_duplicate_ingredient,instructions);
+    this_recipe.push(recipeName, image, no_duplicate_ingredient, instructions);
     all_recipes.push(this_recipe);
-  })
-return all_recipes
-  console.log(all_recipes[0])
+  });
+  return all_recipes;
+  console.log(all_recipes[0]);
 }
 
-
+async function get_all_ingredients() {
+  const { data, error } = await supabase.from('ingredient').select('*');
+  const all_ingredients = [];
+  data.forEach((i) => {
+    all_ingredients.push(i.ingredientName);
+  });
+  console.log(all_ingredients);
+}

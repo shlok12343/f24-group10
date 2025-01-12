@@ -2,10 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* min-height: 100vh; <-- was causing images to stick to bottom */
   text-align: center;
-  margin-top: 40px;
-  margin-bottom: 40px; 
+  margin-top: 30px;
+  margin-bottom: 5px;
   gap: 15px;
   word-wrap: break-word;
 }
@@ -77,6 +76,7 @@
   font-weight: bold;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   transition: box-shadow 200ms ease-in-out, transform 200ms ease-in-out;
+  margin-bottom: 60px;
 }
 
 .searchbtn:hover {
@@ -89,7 +89,7 @@
 }
 
 .ingredientList {
-  margin-top: 15px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -128,78 +128,14 @@
   font-size: 10px;
   font-weight: 1100;
   position: absolute;
-  top: 1px;
-  right: 0px;
+  top: 0px;
+  right: 2px;
   cursor: pointer;
   font-weight: bold;
 }
 
-/* Responsive adjustments */
-/* Tablet view */
-@media (max-width: 768px) {
-  .container {
-    padding: 10px;
-    gap: 10px;
-  }
-
-  .container h1 {
-    font-size: 32px;
-  }
-
-  .addItems {
-    gap: 15px;
-  }
-
-  .ingredientItemsContainer {
-    width: 280px;
-  }
-}
-
-/* Mobile view */
-@media (max-width: 480px) {
-  .container {
-    padding: 5px;
-    gap: 8px;
-    margin-top: 10px;
-  }
-
-  .container h1 {
-    font-size: 28px;
-  }
-
-  .container p {
-    font-size: 16px;
-  }
-
-  .addItems {
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-  }
-
-  .addItems input,
-  .addItems button {
-    width: 100%;
-    margin: 5px 0;
-  }
-
-  .searchbtn {
-    width: 100%;
-    margin-top: 10px;
-  }
-
-  .ingredientItemsContainer {
-    width: 100%;
-    gap: 5px;
-  }
-
-  .ingredientList h3 {
-    font-size: 20px;
-  }
-}
-
-/* Remove any extra space from the body and html */
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   overflow-x: hidden;

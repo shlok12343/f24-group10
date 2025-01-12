@@ -30,10 +30,10 @@
 .links {
   list-style: none;
   display: flex;
-  gap: 40px;
+  gap: 60px;
   margin-left: auto;
   align-items: center;
-  margin-right: 35px;
+  margin-right: 25px;
   font-size: 20px;
   color: white;
 }
@@ -45,29 +45,6 @@
 .links li:hover {
   text-decoration: underline;
   cursor: pointer;
-}
-
-.login {
-  padding: 10px 30px;
-  background-color: #f8b8d6;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-right: 55px;
-  white-space: nowrap;
-  font-size: 15px;
-  font-weight: bold;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  transition: box-shadow 200ms ease-in-out, transform 200ms ease-in-out;
-}
-
-.login:hover {
-  transform: scale(1.05);
-}
-
-.login:active {
-  transform: translateY(2px);
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
 }
 
 .menuIcon {

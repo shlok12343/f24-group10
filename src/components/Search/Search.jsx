@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import styles from './Search.module.css';
+import { get_all_recipes } from '../../superbase';
 
-function Search() {
+function Search({ setRec }) {
   const [ingredient, setIngredient] = useState('');
   const [ingredientsList, setIngredientsList] = useState([]);
 
@@ -16,10 +17,51 @@ function Search() {
     setIngredientsList(ingredientsList.filter((_, i) => i !== index));
   };
 
+  const handleSearch = async () => {
+    if (!ingredientsList.length) {
+      alert('Please add at least one ingredient.');
+      return;
+    }
+
+    const rec = await processRecipes(ingredientsList);
+
+    if (!rec.length) {
+      alert('No recipes found for inputted ingredients');
+      return;
+    }
+    setIngredientsList([]);
+    setRec(rec);
+  };
+
+  async function fetchRecipeDetails(recipe) {
+    const ingredient = recipe.ingredients.ingredients;
+    const instructions = recipe.instructions.instructions.join('.\n');
+    const recipeName = recipe.recipeName;
+    const image = recipe.Image_Name;
+    const this_recipe = [];
+    const no_duplicate_ingredient = [...new Set(ingredient)];
+
+    return {
+      name: recipeName,
+      image: '../../../public/recipeImages/Recipes/' + image + '.jpg',
+      ingredients: no_duplicate_ingredient,
+      directions: instructions,
+    };
+  }
+
+  async function processRecipes(onHandIngredients) {
+    const recomendedRecipes = await get_all_recipes(onHandIngredients);
+    const promises = recomendedRecipes.map((element) =>
+      fetchRecipeDetails(element)
+    );
+    const rec = await Promise.all(promises);
+    return rec;
+  }
+
   return (
     <>
       <div className={styles.container}>
-        <h1>Search For Recipes</h1>
+        <h1 id="search">Search For Recipes</h1>
         <p>Add available ingredients to your wishlist.</p>
 
         <div className={styles.addItems}>
@@ -52,7 +94,9 @@ function Search() {
           </div>
         </div>
 
-        <button className={styles.searchbtn}>Search</button>
+        <button onClick={handleSearch} className={styles.searchbtn}>
+          Search
+        </button>
       </div>
     </>
   );

@@ -1,68 +1,14 @@
-.footer {
-    width: 100%;
-    background-color: #363f2f; /* Same as the header */
-    color: white;
-    padding: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #363f2f;
+  height: 75px;
 
-.footerContent {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px; /* Ensures alignment with header’s max width */
-}
-
-.about, .contact, .socialMedia {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-h4 {
-    margin-bottom: 10px;
-    font-size: 18px;
-    color: #f8b8d6; /* Matching the color accent from the login button */
-}
-
-p {
+  p {
     font-size: 16px;
-    text-align: center;
+    color: white;
     margin: 0;
-}
-
-@media (max-width: 800px) {
-    .footerContent {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .about, .contact, .socialMedia {
-        margin-bottom: 20px;
-    }
-}
-
-/* Custom styles for slick carousel dots */
-.slick-dots li button {
-    font-size: 0; /* Removes the default number inside dots */
-    width: 15px; /* Increases the width of the dots */
-    height: 15px; /* Increases the height of the dots */
-    border-radius: 50%; /* Makes dots perfectly circular */
-    background: #fff; /* Sets dot color to white */
-}
-
-.slick-dots li button:before {
-    content: ''; /* Overrides default pseudo-elements inside the dots */
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: #ccc; /* Sets a default color for dots */
-    border-radius: 50%; /* Ensures the pseudo-element is also circular */
-}
-
-.slick-dots li.slick-active button:before {
-    background-color: #000; /* Changes color for the active dot */
+  }
 }
